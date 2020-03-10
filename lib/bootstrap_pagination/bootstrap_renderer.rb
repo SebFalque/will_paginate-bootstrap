@@ -28,9 +28,9 @@ module BootstrapPagination
       link_options = @options[:link_options] || {}
 
       if page == current_page
-        tag("li", tag("span", page), class: "active")
+        tag("li", tag("span", page), class: "active", "aria-label" => "Page #{page}")
       else
-        tag("li", link(page, page, link_options.merge(rel: rel_value(page))))
+        tag("li", link(page, page, link_options.merge(rel: rel_value(page))), "aria-label" => "Page #{page}")
       end
     end
 
@@ -38,9 +38,9 @@ module BootstrapPagination
       link_options = @options[:link_options] || {}
 
       if page
-        tag("li", link(text, page, link_options), class: classname)
+        tag("li", link(text, page, link_options), class: classname, "aria-label" => "Page précédente")
       else
-        tag("li", tag("span", text), class: "%s disabled" % classname)
+        tag("li", tag("span", text), class: "%s disabled" % classname, "aria-label" => "Page suivante")
       end
     end
 
